@@ -5,6 +5,6 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-	site: 'https://s3f4-g.github.io',
+	site: 'https://sefacangenc.github.io',
 	integrations: [mdx(), sitemap()],
 });
