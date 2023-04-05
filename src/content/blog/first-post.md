@@ -1,16 +1,168 @@
 ---
-title: "First post"
-description: "Lorem ipsum dolor sit amet"
-pubDate: "Jul 08 2022"
-heroImage: "/placeholder-hero.jpg"
+title: "Implementing a Least Recently Used (LRU) Cache in Python"
+description: "This blog post explains the LRU cache replacement policy and provides a step-by-step guide on how to implement it in Python. The post is aimed at developers who want to learn more about caching and LRU cache implementation in Python. By the end of the post, readers will have a clear understanding of LRU cache and be able to apply this knowledge to their own projects."
+pubDate: "Apr 06 2023"
+heroImage: "/"
 ---
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Vitae ultricies leo integer malesuada nunc vel risus commodo viverra. Adipiscing enim eu turpis egestas pretium. Euismod elementum nisi quis eleifend quam adipiscing. In hac habitasse platea dictumst vestibulum. Sagittis purus sit amet volutpat. Netus et malesuada fames ac turpis egestas. Eget magna fermentum iaculis eu non diam phasellus vestibulum lorem. Varius sit amet mattis vulputate enim. Habitasse platea dictumst quisque sagittis. Integer quis auctor elit sed vulputate mi. Dictumst quisque sagittis purus sit amet.
 
-Morbi tristique senectus et netus. Id semper risus in hendrerit gravida rutrum quisque non tellus. Habitasse platea dictumst quisque sagittis purus sit amet. Tellus molestie nunc non blandit massa. Cursus vitae congue mauris rhoncus. Accumsan tortor posuere ac ut. Fringilla urna porttitor rhoncus dolor. Elit ullamcorper dignissim cras tincidunt lobortis. In cursus turpis massa tincidunt dui ut ornare lectus. Integer feugiat scelerisque varius morbi enim nunc. Bibendum neque egestas congue quisque egestas diam. Cras ornare arcu dui vivamus arcu felis bibendum. Dignissim suspendisse in est ante in nibh mauris. Sed tempus urna et pharetra pharetra massa massa ultricies mi.
+In this post, we will be implementing an LRU cache in Python. We will use a doubly linked list to keep track of the order in which the keys were accessed, and we will use a hash table to provide O(1) access to the key-value pairs.
 
-Mollis nunc sed id semper risus in. Convallis a cras semper auctor neque. Diam sit amet nisl suscipit. Lacus viverra vitae congue eu consequat ac felis donec. Egestas integer eget aliquet nibh praesent tristique magna sit amet. Eget magna fermentum iaculis eu non diam. In vitae turpis massa sed elementum. Tristique et egestas quis ipsum suspendisse ultrices. Eget lorem dolor sed viverra ipsum. Vel turpis nunc eget lorem dolor sed viverra. Posuere ac ut consequat semper viverra nam. Laoreet suspendisse interdum consectetur libero id faucibus. Diam phasellus vestibulum lorem sed risus ultricies tristique. Rhoncus dolor purus non enim praesent elementum facilisis. Ultrices tincidunt arcu non sodales neque. Tempus egestas sed sed risus pretium quam vulputate. Viverra suspendisse potenti nullam ac tortor vitae purus faucibus ornare. Fringilla urna porttitor rhoncus dolor purus non. Amet dictum sit amet justo donec enim.
+Designing the LRU Cache Class
+First, let's design the LRU cache class. We will name it LRUCache, and it will have the following methods:
 
-Mattis ullamcorper velit sed ullamcorper morbi tincidunt. Tortor posuere ac ut consequat semper viverra. Tellus mauris a diam maecenas sed enim ut sem viverra. Venenatis urna cursus eget nunc scelerisque viverra mauris in. Arcu ac tortor dignissim convallis aenean et tortor at. Curabitur gravida arcu ac tortor dignissim convallis aenean et tortor. Egestas tellus rutrum tellus pellentesque eu. Fusce ut placerat orci nulla pellentesque dignissim enim sit amet. Ut enim blandit volutpat maecenas volutpat blandit aliquam etiam. Id donec ultrices tincidunt arcu. Id cursus metus aliquam eleifend mi.
+- __init__(self, capacity): Initializes the LRU cache with a positive size capacity.
+* get(self, key): Returns the value of the key if it exists in the cache, otherwise returns -1.
++ put(self, key, value): Updates the value of the key if it exists in the cache. Otherwise, adds the key-value pair to the cache. If the number of keys exceeds the capacity from this operation, evicts the least recently used key.
+To implement the LRU cache, we will use a hash table to provide O(1) access to the key-value pairs. We will also use a doubly linked list to keep track of the order in which the keys were accessed. The head of the linked list will represent the least recently used node, and the tail of the linked list will represent the most recently used node.
 
-Tempus quam pellentesque nec nam aliquam sem. Risus at ultrices mi tempus imperdiet. Id porta nibh venenatis cras sed felis eget velit. Ipsum a arcu cursus vitae. Facilisis magna etiam tempor orci eu lobortis elementum. Tincidunt dui ut ornare lectus sit. Quisque non tellus orci ac. Blandit libero volutpat sed cras. Nec tincidunt praesent semper feugiat nibh sed pulvinar proin gravida. Egestas integer eget aliquet nibh praesent tristique magna.
+Here is the code for the Node class that we will use to represent each node in the linked list:
+
+```{python}
+class Node:
+    def __init__(self, key, val):
+        self.key = key
+        self.val = val
+        self.prev = None
+        self.next = None
+
+```
+
+The Node class has four attributes: key, val, prev, and next. The key and val attributes represent the key and value of the key-value pair that the node is associated with. The prev attribute is a pointer to the previous node in the linked list, and the next attribute is a pointer to the next node in the linked list.
+
+Next, let's implement the LRUCache class:
+```{python}
+
+class LRUCache:
+    def __init__(self, capacity: int):
+        self.capacity = capacity
+        self.cache = {}
+        self.head = Node(0, 0)
+        self.tail = Node(0, 0)
+        self.head.next = self.tail
+        self.tail.prev = self.head
+
+    def get(self, key: int) -> int:
+        if key not in self.cache:
+            return -1
+        node = self.cache[key]
+        self._remove(node)
+        self._add(node)
+        return node.val
+
+    def put(self, key: int, value: int) -> None:
+        if key in self.cache:
+            node = self.cache[key]
+            node.val = value
+            self._remove(node)
+            self._add(node)
+        else:
+            if len(self.cache) == self.capacity:
+                del self.cache[self.head.next.key]
+                self._remove(self.head.next)
+            node = Node(key, value)
+            self.cache[key] = node
+            self._add(node)
+
+    def _remove(self, node):
+        prev = node.prev
+        next = node.next
+        prev.next = next
+        next.prev = prev
+
+    def _add(self, node):
+```
+
+Now let's move on to the _remove function.
+
+The _remove function is responsible for removing a node from the doubly linked list. It takes in a node as an argument and removes it from the list. Here's the code for the _remove function:
+
+```{python}
+def _remove(self, node):
+    """
+    Remove an existing node from the linked list.
+    """
+    prev = node.prev
+    new = node.next
+    prev.next = new
+    new.prev = prev
+```
+
+
+The _remove function takes in a node as an argument and assigns its predecessor and successor nodes to prev and new, respectively. It then updates the next and prev pointers of these nodes to remove the node from the list.
+
+Finally, we'll implement the LRUCache class that uses the above functions to implement the LRU cache.
+
+```{python}
+class LRUCache:
+    def __init__(self, capacity: int):
+        """
+        Initialize LRUCache.
+        """
+        self.cache = {}
+        self.capacity = capacity
+        self.size = 0
+        self.head = Node(0, 0)
+        self.tail = Node(0, 0)
+        self.head.next = self.tail
+        self.tail.prev = self.head
+
+    def get(self, key: int) -> int:
+        """
+        Retrieve item from provided key. Return -1 if nonexistent.
+        """
+        if key in self.cache:
+            node = self.cache[key]
+            self._remove(node)
+            self._add(node)
+            return node.value
+        else:
+            return -1
+
+    def put(self, key: int, value: int) -> None:
+        """
+        Set the value if the key is not present in the cache. If the cache is at capacity remove the oldest item.
+        """
+        if key in self.cache:
+            node = self.cache[key]
+            self._remove(node)
+            node.value = value
+            self._add(node)
+        else:
+            if self.size == self.capacity:
+                del self.cache[self.head.next.key]
+                self._remove(self.head.next)
+                self.size -= 1
+            node = Node(key, value)
+            self.cache[key] = node
+            self._add(node)
+            self.size += 1
+
+    def _add(self, node):
+        """
+        Add new node right after the dummy head.
+        """
+        p = self.tail.prev
+        p.next = node
+        node.prev = p
+        node.next = self.tail
+        self.tail.prev = node
+
+    def _remove(self, node):
+        """
+        Remove an existing node from the linked list.
+        """
+        prev = node.prev
+        new = node.next
+        prev.next = new
+        new.prev = prev
+```
+
+
+
+
+The LRUCache class has a constructor that initializes the cache with the given capacity. It also initializes an empty cache dictionary, a size variable that keeps track of the current number of nodes in the list, and dummy head and tail nodes that mark the beginning and end of the list.
+
+The get method retrieves the value of a key from the cache, and returns -1 if the key does not exist. If the key exists, it removes the node from its current position in the list and adds it to the end of the list, marking it as the most recently used node.
+
+The put method sets the value of a key in the cache, and removes the least recently used node if the cache is at capacity. If the key already exists in the cache, it removes the node from its current position in the list, updates its value, and adds it to the end of the
