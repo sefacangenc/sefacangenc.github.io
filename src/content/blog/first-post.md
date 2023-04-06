@@ -18,7 +18,7 @@ To implement the LRU cache, we will use a hash table to provide O(1) access to t
 
 Here is the code for the Node class that we will use to represent each node in the linked list:
 
-```{python}
+```python
 class Node:
     def __init__(self, key, val):
         self.key = key
@@ -31,7 +31,7 @@ class Node:
 The Node class has four attributes: key, val, prev, and next. The key and val attributes represent the key and value of the key-value pair that the node is associated with. The prev attribute is a pointer to the previous node in the linked list, and the next attribute is a pointer to the next node in the linked list.
 
 Next, let's implement the LRUCache class:
-```{python}
+```python
 
 class LRUCache:
     def __init__(self, capacity: int):
@@ -77,7 +77,7 @@ Now let's move on to the _remove function.
 
 The _remove function is responsible for removing a node from the doubly linked list. It takes in a node as an argument and removes it from the list. Here's the code for the _remove function:
 
-```{python}
+```python
 def _remove(self, node):
     """
     Remove an existing node from the linked list.
@@ -93,7 +93,7 @@ The _remove function takes in a node as an argument and assigns its predecessor 
 
 Finally, we'll implement the LRUCache class that uses the above functions to implement the LRU cache.
 
-```{python}
+```python
 class LRUCache:
     def __init__(self, capacity: int):
         """
