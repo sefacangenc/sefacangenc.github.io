@@ -10,7 +10,7 @@ The "Diameter of Binary Tree" problem asks us to find the length of the longest 
 
 To solve this problem, we can use a recursive approach that traverses the tree depth-first and keeps track of the maximum diameter seen so far. Here's how the algorithm works:
 
-Define a function dfs(node) that takes a node as input and returns the depth of the deepest leaf node in the subtree rooted at node, as well as the maximum diameter seen so far. We can keep track of the maximum diameter using a nonlocal variable max_diameter.
+Define a function dfs(node) that takes a node as input and returns the depth of the deepest leaf node in the subtree rooted at node, as well as the maximum diameter seen so far. We can keep track of the maximum diameter using a variable max_diameter.
 
 Inside dfs(node), recursively call dfs() on the left child (if it exists) and the right child (if it exists) of node. This will explore the left and right subtrees of node, respectively.
 
