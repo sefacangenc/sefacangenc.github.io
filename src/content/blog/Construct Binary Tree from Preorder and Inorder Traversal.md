@@ -57,3 +57,127 @@ Initially, the preorder and inorder traversals are [3, 9, 20, 15, 7] and [9, 3, 
 We then recursively call the buildTree method for the left subtree, passing the [9, 20] and [9] sub-arrays of the preorder and inorder traversals, respectively. In this call, we create a node with value 9 and assign it to the left attribute of the current node.
 
 Next, we recursively call the buildTree method for the right subtree, passing the [20, 15, 7] and [15, 20, 7] sub-arrays of the preorder and inorder traversals, respectively. In this call, we create a node with value 20, assign it to the right attribute of the current node, and then create a node with value 15 and assign it to the left attribute of the 20 node. Finally, we create a node with value 7 and assign it to the right attribute of the 20 node
+
+step by step explanation
+
+
+Let's use the given example:
+
+```py
+
+preorder = [3,9,20,15,7]
+inorder = [9,3,15,20,7]
+```
+We start with the root node 3, which is the first element of the preorder traversal. We create a TreeNode object with value 3:
+
+```py
+root = TreeNode(3)
+Next, we find the index of the root value 3 in the inorder traversal to know where to split the tree into left and right subtrees. We see that 3 is at index 1 in the inorder traversal:
+```
+
+```py
+Copy code
+inorder = [9, 3, 15, 20, 7]
+             ^
+             |
+             1
+So we split the inorder traversal into left and right subtrees:
+```
+
+```py
+
+left_inorder = [9]
+right_inorder = [15, 20, 7]
+```
+
+Then, we recursively call the buildTree method for the left subtree, passing the corresponding sub-arrays of the preorder and inorder traversals:
+
+```py
+root.left = self.buildTree([9], [9])
+In this call, the preorder and inorder traversals have only one element each, so we create a leaf node with value 9 and return it:``
+````
+
+kotlin
+Copy code
+node = TreeNode(9)
+return node
+We assign the returned node to the left attribute of the root node:
+
+scss
+Copy code
+root.left = TreeNode(9)
+Next, we recursively call the buildTree method for the right subtree, passing the corresponding sub-arrays of the preorder and inorder traversals:
+
+css
+Copy code
+root.right = self.buildTree([20, 15, 7], [15, 20, 7])
+In this call, the preorder traversal has three elements [20, 15, 7], and the inorder traversal has three elements [15, 20, 7].
+
+We start with the root node 20, which is the first element of the preorder traversal. We create a TreeNode object with value 20:
+
+scss
+Copy code
+node = TreeNode(20)
+Next, we find the index of the root value 20 in the inorder traversal to know where to split the tree into left and right subtrees. We see that 20 is at index 1 in the inorder traversal:
+
+css
+Copy code
+inorder = [15, 20, 7]
+                ^
+                |
+                1
+So we split the inorder traversal into left and right subtrees:
+
+css
+Copy code
+left_inorder = [15]
+right_inorder = [7]
+Then, we recursively call the buildTree method for the left subtree, passing the corresponding sub-arrays of the preorder and inorder traversals:
+
+css
+Copy code
+node.left = self.buildTree([15], [15])
+In this call, the preorder and inorder traversals have only one element each, so we create a leaf node with value 15 and return it:
+
+kotlin
+Copy code
+left_node = TreeNode(15)
+return left_node
+We assign the returned node to the left attribute of the root node:
+
+scss
+Copy code
+node.left = TreeNode(15)
+Next, we recursively call the buildTree method for the right subtree, passing the corresponding sub-arrays of the preorder and inorder traversals:
+
+css
+Copy code
+node.right = self.buildTree([7], [7])
+In this call, the preorder and inorder traversals have only one element each, so we create a leaf node with value 7 and return it:
+
+
+
+right_node = TreeNode(7)
+return right_node
+We assign the returned node to the right attribute of the current node:
+
+
+
+node.right = TreeNode(7)
+Finally, we assign the completed right subtree to the root.right attribute:
+
+
+root.right = node
+The recursive calls for the right subtree are finished, and we have completed building the binary tree. We return the root node:
+
+
+
+return root
+So the resulting binary tree is:
+
+
+     3
+   /   \
+  9    20
+      /  \
+     15   7
