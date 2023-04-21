@@ -97,61 +97,52 @@ root.left = self.buildTree([9], [9])
 In this call, the preorder and inorder traversals have only one element each, so we create a leaf node with value 9 and return it:``
 ````
 
-kotlin
-Copy code
+
 node = TreeNode(9)
 return node
 We assign the returned node to the left attribute of the root node:
 
-scss
-Copy code
+
+
+```py
 root.left = TreeNode(9)
 Next, we recursively call the buildTree method for the right subtree, passing the corresponding sub-arrays of the preorder and inorder traversals:
-
-css
-Copy code
+```
 root.right = self.buildTree([20, 15, 7], [15, 20, 7])
 In this call, the preorder traversal has three elements [20, 15, 7], and the inorder traversal has three elements [15, 20, 7].
 
 We start with the root node 20, which is the first element of the preorder traversal. We create a TreeNode object with value 20:
 
-scss
-Copy code
+
 node = TreeNode(20)
 Next, we find the index of the root value 20 in the inorder traversal to know where to split the tree into left and right subtrees. We see that 20 is at index 1 in the inorder traversal:
 
-css
-Copy code
+
 inorder = [15, 20, 7]
                 ^
                 |
                 1
 So we split the inorder traversal into left and right subtrees:
 
-css
-Copy code
+
 left_inorder = [15]
 right_inorder = [7]
 Then, we recursively call the buildTree method for the left subtree, passing the corresponding sub-arrays of the preorder and inorder traversals:
 
-css
-Copy code
+
 node.left = self.buildTree([15], [15])
 In this call, the preorder and inorder traversals have only one element each, so we create a leaf node with value 15 and return it:
 
-kotlin
-Copy code
+
 left_node = TreeNode(15)
 return left_node
 We assign the returned node to the left attribute of the root node:
 
-scss
-Copy code
+
 node.left = TreeNode(15)
 Next, we recursively call the buildTree method for the right subtree, passing the corresponding sub-arrays of the preorder and inorder traversals:
 
-css
-Copy code
+
 node.right = self.buildTree([7], [7])
 In this call, the preorder and inorder traversals have only one element each, so we create a leaf node with value 7 and return it:
 
