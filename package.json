@@ -14,10 +14,15 @@
     "@astrojs/react": "^2.1.1",
     "@astrojs/rss": "^2.3.2",
     "@astrojs/sitemap": "^1.2.1",
-    "@types/react": "^18.0.33",
-    "@types/react-dom": "^18.0.11",
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.1",
     "astro": "^2.1.9",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.59.1",
+    "@typescript-eslint/parser": "^5.59.1",
+    "eslint": "^8.39.0"
   }
 }
