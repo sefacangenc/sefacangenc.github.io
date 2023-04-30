@@ -10,3 +10,5 @@ overrides:
       parser: "@typescript-eslint/parser"
       extraFileExtensions:
         - ".astro"
+
+  
