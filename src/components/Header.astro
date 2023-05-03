@@ -3,17 +3,20 @@ import HeaderLink from './HeaderLink.astro';
 import { SITE_TITLE } from '../consts';
 ---
 
-<header>
-	<h2>
-		{SITE_TITLE}
-	</h2>
-	<nav>
-		<HeaderLink href="/">Home</HeaderLink>
-		<HeaderLink href="/blog">Blog</HeaderLink>
-		<HeaderLink href="/about">About</HeaderLink>
-		<HeaderLink href="https://twitter.com/sefacangenc" target="_blank">Twitter</HeaderLink>
-		<HeaderLink href="https://github.com/sefacangenc" target="_blank">GitHub</HeaderLink>
-	</nav>
+<header class="fixed w-full pq2 z-20 backdrop-blur-md">
+	<div class="mx-auto max-w-3xl" >
+		
+		<nav class="flex items-center gap-3 text-base">
+			<h2 class="font-semibold tracking-tighter p-2">
+				{SITE_TITLE}
+			</h2>
+			<HeaderLink href="/">Home</HeaderLink>
+			<HeaderLink href="/blog">Blog</HeaderLink>
+			<HeaderLink href="/about">About</HeaderLink>
+			<HeaderLink href="https://twitter.com/sefacangenc" target="_blank">Twitter</HeaderLink>
+			<HeaderLink href="https://github.com/sefacangenc" target="_blank">GitHub</HeaderLink>
+		</nav>
+	</div>
 </header>
 <style>
 	header {
