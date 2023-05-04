@@ -1,46 +1,20 @@
 ---
-import FootprintIcon from './icons/footprint';
+import SVGComponent from './icons/footprint';
 import HeaderLink from './HeaderLink.astro';
 import { SITE_TITLE } from '../consts';
 import {IoLogoGithub} from 'react-icons/io';
+import ThemeToggle from './ThemeToggleButton';
 
  
 ---
-
-{/* <header class="fixed w-full p-2 z-20 backdrop-blur-md">
-	<div class="mx-auto max-w-3xl" >
-		
-		<nav class="flex items-center gap-1 text-base">
-			<h2 class="font-semibold tracking-tighter p-2 font-mplus text-lg">
-				<!-- <FootprintIcon /> -->
-				
-			</h2>
-			<div class="items-center gap-6 hidden md:flex">
-				<FootprintIcon />
-				<HeaderLink href="/">Home</HeaderLink>
-				<HeaderLink href="/blog">Blog</HeaderLink>
-				<HeaderLink href="/about">About</HeaderLink>
-				<HeaderLink href="https://twitter.com/sefacangenc" target="_blank">Twitter</HeaderLink>
-				<HeaderLink href="https://github.com/sefacangenc" target="_blank"><IoLogoGithub/>GitHub</HeaderLink>
-			</div>
-			
-		</nav>
-	</div>
-</header>
-*/}
-
-
-
-
-
 
 <header class="fixed w-full p-2 z-20 backdrop-blur-md">
 	<div class="mx-auto max-w-xl">
 	  <nav class="flex items-center gap-3 text-base">
 		<a href="/" class="group">
 		  <h2 class="font-semibold tracking-tighter p-2 font-mplus text-lg">
-			<FootprintIcon />
-		</h2>
+				<SVGComponent />
+			</h2>
 		</a>
 		<div class="items-center gap-6 hidden md:flex">
 			<HeaderLink href="/">Home</HeaderLink>
@@ -50,7 +24,7 @@ import {IoLogoGithub} from 'react-icons/io';
 			<HeaderLink href="https://github.com/sefacangenc" target="_blank"><IoLogoGithub/>GitHub</HeaderLink>
 		</div>
 		<div class="flex-1"></div>
-
+			<ThemeToggle client:load/>
 	  </nav>
 	</div>
   </header>
