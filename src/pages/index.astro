@@ -8,6 +8,13 @@ import { IoArrowForward } from 'react-icons/io5/index.js'
 import Content from '../components/content.astro';
 import MasterHead from '../components/MasterHead.astro';
 
+
+
+const posts = (await Astro.glob('./posts/*.md')).sort(
+  (a: any, b: any) =>
+    new Date(b.frontmatter.createdAt).valueOf() -
+    new Date(a.frontmatter.createdAt).valueOf()
+)
 ---
 
 <!DOCTYPE html>
@@ -32,11 +39,11 @@ import MasterHead from '../components/MasterHead.astro';
         </section>
         <section>
           <ul class="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <!-- {
+            {
               posts.map(post => (
                 <li class="text-center mb-4">
-                  
-                    <Image
+                  <a href={post.url}>
+                    <heroImage
                       class="border border-slate-300 dark:border-zinc-700 rounded-xl"
                       src={post.frontmatter.heroImage}
                       width={720 * 2}
@@ -50,11 +57,11 @@ import MasterHead from '../components/MasterHead.astro';
                       <div class="opacity-70">
                         {post.frontmatter.description}
                       </div>
-                    )} -->
-                  
+                    )}
+                  </a>
                 </li>
-              
-            
+              ))
+            }
           </ul>
         </section>
         <!-- <CreatedWithSection /> -->
