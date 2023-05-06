@@ -8,7 +8,7 @@ const SVGComponent = (props: SVGProps<SVGSVGElement>) => (
     
 
     className="w-20 inline-block transition-transform group-hover:rotate-[20deg]"
-    viewBox="10 0 60 60"
+    viewBox="10 5 60 60"
     fill="currentColor"
     style={{
         
