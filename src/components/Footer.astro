@@ -1,13 +1,10 @@
 ---
-const today = new Date();
+import { HOMEPAGE_URL } from "../consts";
+
+const today = new Date()
 ---
 
-<footer>
-	&copy; {today.getFullYear()} SefaCanGenc. All rights reserved.
+<footer class="text-zinc-500 p-4 text-center">
+  &copy; {today.getFullYear()}
+  <a href={HOMEPAGE_URL}> SefaCanGenç</a>. All rights reserved.
 </footer>
-<style>
-	footer {
-		padding: 25px;
-		text-align: center;
-	}
-</style>
