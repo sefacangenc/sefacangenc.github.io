@@ -13,7 +13,7 @@ We can use the length of the left subtree to split the preorder traversal into l
 We can then recursively build the left and right subtrees.
 Let's take the example of the following binary tree:
 
-```m
+```cpp
      3
    /   \
   9    20

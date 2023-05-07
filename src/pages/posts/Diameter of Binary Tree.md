@@ -2,7 +2,7 @@
 title: "Finding the Diameter of a Binary Tree using Depth-First Search"
 description: "This tutorial explains how to find the diameter of a binary tree using depth-first search (DFS) algorithm in Python. It includes a step-by-step example to illustrate the process of traversing the tree and calculating the diameter."
 pubDate: "Apr 09 2023"
-heroImage: "/diametes-of-a-binary-tree.png"
+heroImage: "./posts/diametes-of-a-binary-tree.jpg"
 ---
 Solving the Diameter of Binary Tree Problem with Recursion
 

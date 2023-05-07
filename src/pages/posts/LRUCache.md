@@ -2,7 +2,7 @@
 title: "Implementing a Least Recently Used (LRU) Cache in Python"
 description: "This blog post explains the LRU cache replacement policy and provides a step-by-step guide on how to implement it in Python. The post is aimed at developers who want to learn more about caching and LRU cache implementation in Python. By the end of the post, readers will have a clear understanding of LRU cache and be able to apply this knowledge to their own projects."
 pubDate: "Apr 06 2023"
-heroImage: "/LRU-cache.png"
+heroImage: "./posts/LRU-cache.png"
 ---
 
 

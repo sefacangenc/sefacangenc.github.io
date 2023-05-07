@@ -5,8 +5,9 @@ import Footer from '../components/Footer.astro';
 import { SITE_TITLE, SITE_DESCRIPTION, 	HOMEPAGE_URL } from '../consts';
 import Body from '../components/Body.astro';
 import { IoArrowForward } from 'react-icons/io5/index.js'
-import Content from '../components/content.astro';
+import Content from '../components/Content.astro';
 import MasterHead from '../components/MasterHead.astro';
+import {Image} from '@astrojs/image/components'
 
 
 
@@ -43,9 +44,10 @@ const posts = (await Astro.glob('./posts/*.md')).sort(
               posts.map(post => (
                 <li class="text-center mb-4">
                   <a href={post.url}>
-                    <heroImage
+                    <Image
                       class="border border-slate-300 dark:border-zinc-700 rounded-xl"
-                      src={post.frontmatter.Image}
+                      format="png"
+                      src={post.frontmatter.heroImage}
                       width={720 * 2}
                       aspectRatio={2.0}
                       alt="Thumbnail"
