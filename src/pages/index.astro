@@ -7,7 +7,7 @@ import Body from '../components/Body.astro';
 import { IoArrowForward } from 'react-icons/io5/index.js'
 import Content from '../components/Content.astro';
 import MasterHead from '../components/MasterHead.astro';
-import {Image} from '@astrojs/image/components'
+import { Image } from '@astrojs/image/components'
 
 
 
@@ -46,7 +46,7 @@ const posts = (await Astro.glob('./posts/*.md')).sort(
                   <a href={post.url}>
                     <Image
                       class="border border-slate-300 dark:border-zinc-700 rounded-xl"
-                      format="png"
+                      format='jpg'
                       src={post.frontmatter.heroImage}
                       width={720 * 2}
                       aspectRatio={2.0}
