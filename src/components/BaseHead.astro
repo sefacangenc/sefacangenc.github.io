@@ -59,3 +59,20 @@ const { title, description, image = '/placeholder-social.jpg' } = Astro.props;
 	  document.documentElement.classList.add('dark')
 	}
   </script>
+
+
+<!-- 
+<style is:inline>
+	body {
+	  visibility: hidden;
+	  opacity: 0;
+	}
+  </style>
+  
+  <style is:global>
+	body {
+	  visibility: visible;
+	  opacity: 1;
+	  transition: visibility 0.2s linear, opacity 0.2s linear;
+	}
+  </style> -->
