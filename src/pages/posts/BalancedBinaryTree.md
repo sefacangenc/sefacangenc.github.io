@@ -3,6 +3,8 @@ title: "How to Determine if a Binary Tree is Height-Balanced using Python"
 description: "This tutorial explains how to find the diameter of a binary tree using depth-first search (DFS) algorithm in Python. It includes a step-by-step example to illustrate the process of traversing the tree and calculating the diameter."
 pubDate: "Apr 10 2023"
 heroImage: "/posts-jpg/balanced-binary-tree.jpg"
+layout: ../../layouts/BlogPost.astro
+
 ---
 
 A balanced binary tree is a binary tree in which the height of the two subtrees of any node never differ by more than one. In other words, a binary tree is height-balanced if for each node in the tree, the difference in the height of the left and right subtrees is at most one.

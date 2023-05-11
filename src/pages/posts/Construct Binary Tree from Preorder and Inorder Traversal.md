@@ -3,6 +3,8 @@ title: "Constructing Binary Tree from Preorder and Inorder Traversals in Python"
 description: "Learn how to construct a binary tree from its preorder and inorder traversals using a recursive algorithm in Python, with step-by-step explanation and code."
 pubDate: "Apr 20 2023"
 heroImage: "/posts-jpg/placeholder-hero.jpg"
+layout: ../../layouts/BlogPost.astro
+
 ---
 Construct Binary Tree from Preorder and Inorder Traversal
 Given the preorder and inorder traversals of a binary tree, we can construct the tree using a recursive algorithm. The basic idea is as follows:
