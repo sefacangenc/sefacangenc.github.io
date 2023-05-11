@@ -20,6 +20,10 @@ To implement the LRU cache, we will use a hash table to provide O(1) access to t
 
 Here is the code for the Node class that we will use to represent each node in the linked list:
 
+<br>
+<br>
+<br>
+
 ```python
 class Node:
     def __init__(self, key, val):
@@ -29,10 +33,16 @@ class Node:
         self.next = None
 
 ```
+<br>
+<br>
 
 The Node class has four attributes: key, val, prev, and next. The key and val attributes represent the key and value of the key-value pair that the node is associated with. The prev attribute is a pointer to the previous node in the linked list, and the next attribute is a pointer to the next node in the linked list.
 
 Next, let's implement the LRUCache class:
+
+
+
+
 ```python
 
 class LRUCache:
@@ -92,6 +102,7 @@ The _add function adds a given node to the end of the linked list. Here's how it
 5. Set the prev pointer of the tail node (self.tail.prev) to the new node.
 6. Here's the code for the _add function:
 
+
 ```python
 def _add(self, node):
     p = self.tail.prev
@@ -100,6 +111,8 @@ def _add(self, node):
     node.next = self.tail
     self.tail.prev = node
 ```
+
+
 
 The _remove function removes a given node from the linked list. Here's how it works:
 
@@ -118,8 +131,9 @@ def _remove(self, node):
 
 Together, the _add and _remove functions allow us to maintain the order of the keys in the cache by efficiently adding and removing nodes from the doubly linked list.
 
-
 Finally, we'll implement the LRUCache class that uses the above functions to implement the LRU cache.
+
+
 
 ```python
 class LRUCache:
@@ -172,6 +186,10 @@ class Node:
         self.prev = None
         self.next = None
 ```
+
+
+
+
 The LRUCache class has a constructor that initializes the cache with the given capacity. It also initializes an empty cache dictionary, a size variable that keeps track of the current number of nodes in the list, and dummy head and tail nodes that mark the beginning and end of the list.
 
 The get method retrieves the value of a key from the cache, and returns -1 if the key does not exist. If the key exists, it removes the node from its current position in the list and adds it to the end of the list, marking it as the most recently used node.
