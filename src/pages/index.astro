@@ -56,10 +56,10 @@ const posts = (await Astro.glob('./posts/*.md')).sort(
                       {post.frontmatter.title}
                     </div>
                     {post.frontmatter.description && (
-                      <div class="opacity-70">
+                      <div class="opacity-70 truncate">
                         {post.frontmatter.description}
                       </div>
-                    )}
+                    )}  
                   </a>
                 </li>
               ))
