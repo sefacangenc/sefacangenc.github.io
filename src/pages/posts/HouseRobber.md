@@ -2,7 +2,7 @@
 title: "House Robber Leetcode "
 description: "This tutorial is about solving the House Robber Problem using Dynamic Programming."
 pubDate: "July 31 2023"
-heroImage: "/posts-jpg/balanced-binary-tree.jpg"
+heroImage: "/posts-jpg/houserobber.jpg"
 layout: ../../layouts/BlogPost.astro
 
 ---
