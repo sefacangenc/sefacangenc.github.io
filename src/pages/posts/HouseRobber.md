@@ -6,6 +6,7 @@ heroImage: "/posts-jpg/houserobber.jpg"
 layout: ../../layouts/BlogPost.astro
 
 ---
+
 ## **Solving the House Robber Problem using Dynamic Programming**
 
 ## **Introduction**
@@ -52,8 +53,6 @@ rob2 = temp
 To update **rob1** and **rob2**, we use a temporary variable **temp** to hold the maximum loot value. We calculate **temp** as the maximum between robbing the current house (**rob1 + num**) and not robbing it (**rob2**). After the update, **rob1** is set to the previous value of **rob2**, and **rob2** is set to the value of **temp**.
 
 ### **Step 5: Return the Result**
-
-pythonCopy code
 
 ```python
 return rob2
