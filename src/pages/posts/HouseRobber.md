@@ -23,7 +23,8 @@ class Solution:
         # Function implementation here
 ```
 
-### **Step 2: Initialize Variables**
+### **Step 2: Initialize Variables**  
+
 
 ```python
 rob1, rob2 = 0, 0
@@ -31,7 +32,8 @@ rob1, rob2 = 0, 0
 
 We begin by initializing two variables, **rob1** and **rob2**, to keep track of the maximum loot obtained after robbing the previous and current houses, respectively.
 
-### **Step 3: Dynamic Programming Loop**
+### **Step 3: Dynamic Programming Loop**  
+
 
 ```python
 for n in nums:
